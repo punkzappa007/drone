@@ -2,7 +2,7 @@
 
 # Just a basic script U can improvise lateron asper ur need xD 
 
-MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-10.0"
+MANIFEST="https://gitlab.com/OrangeFox/sync.git"
 DEVICE=CD6
 DT_LINK="https://github.com/mastersenpai05/android_device_TECNO_CD6-pbrp.git"
 DT_PATH=device/TECNO/$DEVICE
@@ -14,26 +14,26 @@ apt install openssh-server -y
 mkdir ~/twrp10 && cd ~/twrp10
 
 echo " ===+++ Syncing Recovery Sources +++==="
-repo init --depth=1 -u $MANIFEST
-repo sync
+cd ~/OrangeFox_10
+git clone https://gitlab.com/OrangeFox/sync.git
+cd sync
+./get_fox_10.sh ~/OrangeFox_10/fox_10.0
+cd ~/OrangeFox_10/fox_10.0
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Building Recovery +++==="
 export ALLOW_MISSING_DEPENDENCIES=true
+export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+export LC_ALL="C"
 . build/envsetup.sh
 echo " source build/envsetup.sh done"
 lunch twrp_${DEVICE}-eng || abort " lunch failed with exit status $?"
-echo " lunch twrp_${DEVICE}-eng done"
+echo " lunch omni_${DEVICE}-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
 echo " mka recoveryimage done"
 
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
-version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
-OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
-
 cd out/target/product/$DEVICE
-mv recovery.img ${OUTFILE%.zip}.img
-zip -r9 $OUTFILE ${OUTFILE%.zip}.img
-
-curl -T $OUTFILE https://oshi.at
+ofoxzip="$(ls *.zip)"
+curl -T $ofoxzip https://oshi.at
