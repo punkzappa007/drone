@@ -31,7 +31,7 @@ export LC_ALL="C"
 . build/envsetup.sh
 echo " source build/envsetup.sh done"
 lunch omni_${DEVICE}-eng || abort " lunch failed with exit status $?"
-echo " lunch omni_${DEVICE}-eng done"
+echo " lunch omni_$DEVICE-eng done"
 mka recoveryimage || abort " mka failed with exit status $?"
 echo " mka recoveryimage done"
 
