@@ -11,7 +11,7 @@ echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
-mkdir ~/twrp10 && cd ~/twrp10
+mkdir ~/OrangeFox_10
 
 echo " ===+++ Syncing Recovery Sources +++==="
 cd ~/OrangeFox_10
