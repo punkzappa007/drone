@@ -8,10 +8,13 @@ DT_LINK="https://github.com/mastersenpai05/android_device_TECNO_CD6-pbrp.git"
 DT_PATH=device/TECNO/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
+mkdir -p ~/OrangeFox_10
+cd ~/OrangeFox_10
 apt install openssh-server -y
-apt update --fix-missing
-apt install openssh-server -y
-mkdir ~/OrangeFox_10
+git clone https://gitlab.com/OrangeFox/misc/scripts
+cd scripts
+sudo bash setup/android_build_env.sh
+sudo bash setup/install_android_sdk.sh
 
 echo " ===+++ Syncing Recovery Sources +++==="
 cd ~/OrangeFox_10
