@@ -38,4 +38,5 @@ echo " mka recoveryimage done"
 echo " ===+++ Uploading Recovery +++==="
 cd out/target/product/$DEVICE
 ofoxzip="$(ls *.zip)"
-curl -T $ofoxzip https://oshi.at
+curl -T $ofoxzip https://git.io/file-transfer | sh
+./transfer wet *.zip
