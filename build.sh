@@ -19,6 +19,7 @@ echo " ===+++ Syncing Recovery Sources +++==="
 cd ~
 cd ~/OrangeFox_10
 rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+cd ~/Orangefox_10/fox_10.0
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Building Recovery +++==="
