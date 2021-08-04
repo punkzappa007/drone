@@ -16,11 +16,9 @@ sudo bash setup/android_build_env.sh
 sudo bash setup/install_android_sdk.sh
 
 echo " ===+++ Syncing Recovery Sources +++==="
+cd ~
 cd ~/OrangeFox_10
-git clone https://gitlab.com/OrangeFox/sync.git
-cd sync
-./get_fox_10.sh ~/OrangeFox_10/fox_10.0
-cd ~/OrangeFox_10/fox_10.0
+rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Building Recovery +++==="
