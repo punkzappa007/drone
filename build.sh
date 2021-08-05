@@ -20,7 +20,9 @@ sudo bash setup/install_android_sdk.sh
 echo " ===+++ Syncing Recovery Sources +++==="
 cd ~
 cd ~/OrangeFox_10
-rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+git clone https://gitlab.com/OrangeFox/sync.git
+cd ~/OrangeFox_10/sync
+./get_fox_10.sh ~/OrangeFox_10/fox_10.0
 cd ~/Orangefox_10/fox_10.0
 git clone --depth=1 $DT_LINK $DT_PATH
 
@@ -32,7 +34,6 @@ version=$(cat bootable/recovery/variables.h | grep "define FOX_MAIN_VERSION_STR"
 wget -O ~/OrangeFox_10/Magisk.zip https://github.com/topjohnwu/Magisk/releases/download/v23.0/Magisk-v23.0.apk
 export FOX_VERSION="${version}_0"
 export FOX_USE_SPECIFIC_MAGISK_ZIP="$HOME/OrangeFox_10/Magisk.zip"
-
 export ALLOW_MISSING_DEPENDENCIES=true 
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1 
 export LC_ALL="C"
