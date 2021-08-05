@@ -1,15 +1,17 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-#MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
+MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
 DEVICE=CD6
 DT_LINK="https://github.com/mastersenpai05/twrp_device_TECNO_CD6 -b orangefox"
 DT_PATH=device/TECNO/$DEVICE
 
+USE_SSH="0";
+
 echo " ===+++ Setting up Build Environment +++==="
 mkdir -p ~/OrangeFox_10
 cd ~/OrangeFox_10
-apt install openssh-server -y
+
 git clone https://gitlab.com/OrangeFox/misc/scripts
 cd scripts
 sudo bash setup/android_build_env.sh
