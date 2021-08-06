@@ -3,9 +3,9 @@
 # Just a basic script U can improvise lateron asper ur need xD 
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0"
-DEVICE=RMX2121
-DT_LINK="https://github.com/mastersenpai05/twrp_device_realme_rmx2121"
-DT_PATH=device/realme/$DEVICE
+DEVICE=LD7
+DT_LINK="https://github.com/mastersenpai05/twrp_device_tecno_pova"
+DT_PATH=device/TECNO/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
