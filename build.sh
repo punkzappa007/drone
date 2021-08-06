@@ -19,4 +19,4 @@ git clone --depth=1 $DT_LINK
 echo " ===+++ Building Recovery +++==="
 cd ~/cam/AIK-Linux
 wget https://dumps.tadiphone.dev/dumps/poco/aresin/-/raw/ares-user-11-RP1A.200720.011-V12.5.3.0.RKJCNXM-release-keys/boot.img
-./unpackimg.sh boot.img
+./unpackimg boot.img
