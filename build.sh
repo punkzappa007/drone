@@ -12,6 +12,8 @@ echo " ===+++ Setting up Build Environment +++==="
 cd ~ && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
 
 echo " ===+++ Syncing Recovery Sources +++==="
+mkdir ~/OrangeFox_10
+cd ~/OrangeFox_10
 git clone $MANIFEST
 cd ~/OrangeFox_10/sync
 ./get_fox_10.sh ~/OrangeFox_10/fox_10.0
