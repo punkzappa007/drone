@@ -1,7 +1,7 @@
 #!/bin/bash
 # Just a basic script U can improvise lateron asper ur need xD 
 
-MANIFEST="git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0"
+MANIFEST="https://gitlab.com/OrangeFox/sync.git"
 DEVICE=CD6
 DT_LINK="https://github.com/mastersenpai05/twrp_device_TECNO_CD6 -b orangefox"
 DT_PATH=device/TECNO/$DEVICE
@@ -9,21 +9,13 @@ DT_PATH=device/TECNO/$DEVICE
 USE_SSH="0";
 
 echo " ===+++ Setting up Build Environment +++==="
-mkdir -p ~/OrangeFox_10
-cd ~/OrangeFox_10
-
-git clone https://gitlab.com/OrangeFox/misc/scripts
-cd scripts
-sudo bash setup/android_build_env.sh
-sudo bash setup/install_android_sdk.sh
+cd ~ && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
 
 echo " ===+++ Syncing Recovery Sources +++==="
-cd ~
-cd ~/OrangeFox_10
-git clone https://gitlab.com/OrangeFox/sync.git
+git clone $MANIFEST
 cd ~/OrangeFox_10/sync
 ./get_fox_10.sh ~/OrangeFox_10/fox_10.0
-cd ~/Orangefox_10/fox_10.0
+cd ~/OrangeFox_10/fox_10.0
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Building Recovery +++==="
