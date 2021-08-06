@@ -7,10 +7,15 @@ DT_LINK="https://github.com/mastersenpai05/twrp_device_TECNO_CD6 -b orangefox"
 DT_PATH=device/TECNO/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
-cd ~ && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
+cd ~
+sudo apt install git aria2 -y
+git clone https://gitlab.com/OrangeFox/misc/scripts
+cd scripts
+sudo bash setup/android_build_env.sh
+sudo bash setup/install_android_sdk.sh
 
 echo " ===+++ Syncing Recovery Sources +++==="
-pwd
+cd ~
 mkdir ~/OrangeFox_10
 cd ~/OrangeFox_10
 git clone $MANIFEST
