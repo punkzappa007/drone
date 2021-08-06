@@ -2,19 +2,20 @@
 
 # Just a basic script U can improvise lateron asper ur need xD 
 
-MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0"
-DEVICE=CD6
-DT_LINK="https://github.com/mastersenpai05/twrp_device_TECNO_CD6"
-DT_PATH=device/TECNO/$DEVICE
+MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp"
+DEVICE=ares 
+DT_LINK="https://github.com/mastersenpai05/twrp_device_xiaomi_ares"
+DT_PATH=device/xiaomi/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
 apt update --fix-missing
 apt install openssh-server -y
-mkdir ~/twrp10 && cd ~/twrp10
+mkdir ~/twrp11 && cd ~/twrp11
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
+repo sync
 repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
@@ -22,7 +23,7 @@ echo " ===+++ Building Recovery +++==="
 . build/envsetup.sh
 export TW_THEME=portrait_hdpi
 export ALLOW_MISSING_DEPENDENCIES=true
-lunch omni_${DEVICE}-eng && mka recoveryimage
+lunch omni_${DEVICE}-eng && mka bootimage
 
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
