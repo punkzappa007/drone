@@ -23,7 +23,7 @@ echo " ===+++ Building Recovery +++==="
 . build/envsetup.sh
 export TW_THEME=portrait_hdpi
 export ALLOW_MISSING_DEPENDENCIES=true
-lunch twrp_${DEVICE}-eng && mka recoverybimage
+lunch twrp_${DEVICE}-eng && mka recoveryimage -j$
 
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
