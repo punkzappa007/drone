@@ -3,9 +3,9 @@
 # Just a basic script U can improvise lateron asper ur need xD 
 
 MANIFEST="git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_10.0"
-DEVICE=phoenix
-DT_LINK="https://github.com/hraj9258/android_device_xiaomi_phoenix_shrp"
-DT_PATH=device/xiaomi/$DEVICE
+DEVICE=E6746
+DT_LINK="https://github.com/mastersenpai05/twrp_micromax_e6746 -b shrp"
+DT_PATH=device/micromax/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -15,23 +15,18 @@ mkdir ~/shrp && cd ~/shrp
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
-repo sync -j$(nproc --all)
+repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Building Recovery +++==="
-export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
-echo " source build/envsetup.sh done"
-lunch omni_${DEVICE}-eng || abort " lunch failed with exit status $?"
-echo " lunch omni_${DEVICE}-eng done"
-mka recoveryimage || abort " mka failed with exit status $?"
-echo " mka recoveryimage done"
+export ALLOW_MISSING_DEPENDENCIES=true
+lunch omni_${DEVICE}-eng
+mka recoveryimage
 
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
 
 cd out/target/product/$DEVICE
-sudo zip -r9 SHRP-phoenix.zip recovery.img
-curl -T SHRP-phoenix.zip https://oshi.at
 curl -sL https://git.io/file-transfer | sh
 ./transfer wet *.zip
