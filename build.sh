@@ -3,9 +3,9 @@
 # Just a basic script U can improvise lateron asper ur need xD 
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0"
-DEVICE=E6746
-DT_LINK="https://github.com/mastersenpai05/twrp_micromax_e6746"
-DT_PATH=device/micromax/$DEVICE
+DEVICE=RMX2121
+DT_LINK="https://github.com/mastersenpai05/twrp_device_realme_rmx2121"
+DT_PATH=device/realme/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -20,7 +20,6 @@ git clone --depth=1 $DT_LINK $DT_PATH
 
 echo " ===+++ Building Recovery +++==="
 . build/envsetup.sh
-export TW_THEME=portrait_hdpi
 export ALLOW_MISSING_DEPENDENCIES=true
 lunch omni_${DEVICE}-eng && mka recoveryimage
 
