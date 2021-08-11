@@ -3,8 +3,8 @@
 # Just a basic script U can improvise lateron asper ur need xD 
 
 MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp"
-DEVICE=juice
-DT_LINK="https://github.com/mastersenpai05/twrp_device_xiaomi_juice -b android-11.0"
+DEVICE=ares
+DT_LINK="https://github.com/mastersenpai05/twrp_device_xiaomi_ares"
 DT_PATH=device/xiaomi/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
@@ -27,8 +27,8 @@ lunch twrp_${DEVICE}-eng && mka recoveryimage
 # Upload zips & recovery.img (U can improvise lateron adding telegram support etc etc)
 echo " ===+++ Uploading Recovery +++==="
 cd out/target/product/$DEVICE
-mv recovery.img TWRP-3.5.2-juice-08102021.img
+mv recovery.img TWRP-11-3.5.2-ares-08112021.img
 
 #curl -T $OUTFILE https://oshi.at
 curl -sL $OUTFILE https://git.io/file-transfer | sh
-./transfer wet *.img
+./transfer wet TWRP-11-3.5.2-ares-08112021.img
