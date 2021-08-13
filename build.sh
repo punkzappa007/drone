@@ -2,10 +2,10 @@
 
 # Just a basic script U can improvise lateron asper ur need xD 
 
-MANIFEST="git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_10.0"
-DEVICE=E6746
-DT_LINK="https://github.com/mastersenpai05/twrp_micromax_e6746 -b shrp-10.0"
-DT_PATH=device/micromax/$DEVICE
+MANIFEST="git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_11.0"
+DEVICE=juice
+DT_LINK="http://github.com/Joaquin-000/device_xiaomi_juice-shrp"
+DT_PATH=device/xiaomi/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
@@ -15,6 +15,7 @@ mkdir ~/shrp && cd ~/shrp
 
 echo " ===+++ Syncing Recovery Sources +++==="
 repo init --depth=1 -u $MANIFEST
+repo sync
 repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
 
